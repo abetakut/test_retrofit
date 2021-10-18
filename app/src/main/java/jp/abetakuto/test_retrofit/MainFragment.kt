@@ -9,7 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import jp.abetakuto.test_retrofit.model.Channel
+//import jp.abetakuto.test_retrofit.model.Channel
+import jp.abetakuto.test_retrofit.model.CourseInfo
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -27,18 +28,18 @@ class MainFragment : Fragment() {
         val channelInfoApi = Retrofit
             .Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://live.fc2.com")
+            .baseUrl("https://native-team-code-test-api.herokuapp.com")
             .build()
             .create(ChannelApiInterface::class.java)
 
         Log.d(TAG, "onCreateView: set listData")
-        val listData = arrayListOf<Channel>()
+//        val listData = arrayListOf<CourseInfo>()
 
         //APIデータ取得
         lifecycleScope.launch {
             Log.d(TAG, "onCreateView: get APIdata")
             val channelList = channelInfoApi.getChannelList()
-            Log.d(TAG, "size=${channelList.channel.size}, res=${channelList.channel}")
+//            Log.d(TAG, "size=${channelList.channel.size}, res=${channelList.channel}")
 
             Log.d(TAG, "onCreateView: set recyclerView")
             val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
@@ -47,7 +48,7 @@ class MainFragment : Fragment() {
             val layoutManager = LinearLayoutManager(context)
             recyclerView.layoutManager = layoutManager
             Log.d(TAG, "onCreateView: set MainViewAdapter")
-            recyclerView.adapter = MainViewAdapter(channelList.channel)
+            recyclerView.adapter = MainViewAdapter(channelList)
         }
 
         Log.d(TAG, "onCreateView: end")

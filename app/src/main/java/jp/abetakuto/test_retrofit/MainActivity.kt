@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dmax.dialog.SpotsDialog
-import jp.abetakuto.test_retrofit.model.Channel
+//import jp.abetakuto.test_retrofit.model.Channel
 import jp.abetakuto.test_retrofit.model.ChannelInfo
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope

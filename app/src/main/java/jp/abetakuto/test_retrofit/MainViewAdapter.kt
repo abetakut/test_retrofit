@@ -8,10 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import jp.abetakuto.test_retrofit.model.Channel
+//import jp.abetakuto.test_retrofit.model.Channel
+import jp.abetakuto.test_retrofit.model.CourseInfo
+import retrofit2.Call
 
 
-class MainViewAdapter(private val channels: List<Channel>) : RecyclerView.Adapter<MainViewAdapter.ViewHolder>() {
+class MainViewAdapter(private val channels: Array<CourseInfo>) : RecyclerView.Adapter<MainViewAdapter.ViewHolder>() {
     val TAG = "MainViewAdapter"
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -34,11 +36,11 @@ class MainViewAdapter(private val channels: List<Channel>) : RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Log.d(TAG, "onBindViewHolder: start")
-        if (channels[position].image.isNotEmpty()){
-            Picasso.get().load(channels[position].image).into(holder.image)
+        if (channels[position].icon_url.isNotEmpty()){
+            Picasso.get().load(channels[position].icon_url).into(holder.image)
         }
         holder.name.text = channels[position].name
-        holder.title.text = channels[position].title
+        holder.title.text = channels[position].teacher_name
         holder.id.text = channels[position].id
     }
 
